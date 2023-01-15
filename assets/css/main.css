@@ -37,10 +37,10 @@ input {
   display: inline-block;
   margin-right: 5px;
 }
-
-.info input {
+ 
+.info input[type=text] input[type=email]{
   display: block;
-  width: 300px;
+  width: 400px;
   height: 20px;
   border: 0;
   border-radius: 3px;
@@ -50,7 +50,7 @@ input {
 }
 
 .info input:last-child {
-  margin: 0;
+  margin: 20px 0px;
 }
 
 .info input:focus {
@@ -59,17 +59,18 @@ input {
 }
 
 input[type="submit"]{
-  vertical-align: top;
-  height: 98px;
-  width: 100px;
-  margin: 0;
-  padding: 0;
+  
+  height: 48px;
+  width: 126px;
+  margin: 0 20px;
+  padding: 20px 22px;
+  align-items: center;
+  text-align: center;
   border: 0;
   border-radius: 3px;
   background: pink;
   cursor: pointer;
   font-weight: 700;
-  letter-spacing: 1px;
   color: #fff;
   background: linear-gradient(45deg, #FF6C54, #FFA754);
 }

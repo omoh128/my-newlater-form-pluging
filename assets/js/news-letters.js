@@ -11,15 +11,15 @@ window.onload = function() {
 $(document).ready(function() {
     $("form").validate({
         rules: {
-            my_input: {
+            my_name: {
                 required: true,
                 minlength: 5
             }
         },
-        messages: {
-            my_input: {
-                required: "Please enter your input",
-                minlength: "Your input should be at least 5 characters"
+        rules: {
+            my_email: {
+                required: true,
+                minlength: 3
             }
         }
     });
@@ -28,6 +28,6 @@ $(document).ready(function() {
 $("form").submit(function(e) {
     e.preventDefault();
     if ($(this).valid()) {
-        $(this).submit();
+        $(this).Subscribe();
     }
 });

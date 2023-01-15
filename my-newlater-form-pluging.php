@@ -9,16 +9,15 @@ Author: Omomoh
 
 
 function mynewslater_form_function() {
-    
-  $form ='<form action="' . plugin_dir_url( __FILE__ ) . 'form-submit.php" method="post">';
+
+  $form ='<form action="' . plugin_dir_url( __FILE__ ) . '/form-submit.php" method="post">';
   $form .= '<h3>Newsletter Signup</h3>';
   $form .= '<p>No spam, unsubscribe at any time.</p>';
   $form .= '<div class="info">';
-  
-  $form .= '<input type="text" name="name" placeholder="Name" >';
-  $form .= '<input type="email"  name="email" placeholder="Your Email">';
+  $form .= '<input type="text"  name="your_name"  placeholder="Name" >';
+  $form .= '<input type="email" name="your_email" placeholder="Email">';
   $form .= '</div>';
-  $form .= '<input type="submit" value="Subscribe">';
+  $form .= '<input type="submit" name="submit" value="Subscribe">';
   $form .= '</form>';
   return $form;
 }
