@@ -7,28 +7,41 @@ Version: 1.0
 Author: Omomoh
 */
 
-
-function mynewslater_form_function() {
-
-  $form ='<form action="' . plugin_dir_url( __FILE__ ) . '/form-submit.php" method="post">';
-  $form .= '<h3>Newsletter Signup</h3>';
-  $form .= '<p>No spam, unsubscribe at any time.</p>';
-  $form .= '<div class="info">';
-  $form .= '<input type="text"  name="your_name"  placeholder="Name" >';
-  $form .= '<input type="email" name="your_email" placeholder="Email">';
-  $form .= '</div>';
-  $form .= '<input type="submit" name="submit" value="Subscribe">';
-  $form .= '</form>';
-  return $form;
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
 }
-add_shortcode( 'my_form', 'mynewslater_form_function' );
 
-function news_assets() {
-    wp_enqueue_style( 'news-letters', plugin_dir_url( __FILE__ ) . 'assets/css/main.css' );
+class NewsletterForm_Plugin {
+    private static $instance;
+    private function __construct() {
+        // register shortcode
+        add_shortcode( 'newsletter_form', array( $this, 'render_form' ) );
+        // register stylesheet
+        add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
+    }
 
-    
-    wp_enqueue_script( 'jquery-validation', 'https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js', array( 'jquery' ), '1.19.2', true );
+    public static function get_instance() {
+        if ( !isset( self::$instance ) ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
-    wp_enqueue_script( 'news-letters', plugin_dir_url( __FILE__ ) . 'assets/js/news-letters.js', array( 'jquery' ), '1.0', true );
+    public function render_form() {
+        // Code to generate the form markup
+        $form = '<form>';
+        $form .= '<input type="email" name="email" placeholder="Enter your email">';
+        $form .= '<input type="submit" value="Subscribe">';
+        $form .= '</form>';
+        return $form;
+    }
+
+    public function register_styles() {
+        // register the stylesheet
+        wp_register_style( 'newsletter-form-css', plugins_url( 'newsletter-form/css/styles.css' ) );
+        // enqueue the stylesheet
+        wp_enqueue_style( 'newsletter-form-css' );
+    }
 }
-add_action( 'wp_enqueue_scripts', 'news_assets' );
+//initialize the plugin
+NewsletterForm_Plugin::get_instance();
