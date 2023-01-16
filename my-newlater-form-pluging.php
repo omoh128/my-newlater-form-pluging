@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-newsletter-form.php';
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-styles.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-enqueue.php';
 
 
 function my_custom_plugin_init() {
     NewsletterForm::get_instance();
-    Styles::get_instance();
+    Enqueue_script::get_instance();
 }
 
 add_action( 'plugins_loaded', 'my_custom_plugin_init' );

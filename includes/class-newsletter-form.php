@@ -4,7 +4,7 @@ class NewsletterForm{
     private static $instance;
     private function __construct() {
         // register shortcode
-        add_shortcode( 'newsletter_form', array( $this, 'render_form' ) );
+        add_shortcode( 'newsletter_form', array( $this, 'newsletter_form' ) );
        
          // handle form submission
          add_action( 'init', array( $this, 'handle_form_submission' ) );
@@ -17,12 +17,12 @@ class NewsletterForm{
         return self::$instance;
     }
 
-    public function render_form() {
+    public function newsletter_form() {
         // Code to generate the form markup
-        $form = '<form method="post" action="">';
-        $form .= '<input type="text" name="name" placeholder="Enter your name">';
-        $form .= '<input type="email" name="email" placeholder="Enter your email">';
-        $form .= '<input type="submit" value="Subscribe" name="subscribe">';
+        $form = '<form id="my-form" method="post" action="">';
+        $form .= '<input type="text" name="name" class="info" placeholder="Enter your name">';
+        $form .= '<input type="email" name="email" class="info" placeholder="Enter your email">';
+        $form .= '<input type="submit" class="btn "value="Subscribe" name="subscribe">';
         $form .= '</form>';
         return $form;
     }
