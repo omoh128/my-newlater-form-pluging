@@ -1,5 +1,15 @@
 <?php 
 
+/**
+ * The clas enqueue
+ *
+ * @link https://developer.wordpress.org/
+ *
+ * @package WordPress
+ * @subpackage news lattersingup
+ * @since 1.0.0
+ */
+
 class Enqueue_script {
     private static $instance;
 
@@ -21,7 +31,7 @@ class Enqueue_script {
         wp_enqueue_style( 'my-newslater-plugin-styles', plugin_dir_url( __FILE__ ) . 'css/main.css' );
 
          // Register scripts
-         wp_enqueue_script( 'my-newslater-plugin-script', plugin_dir_url( __FILE__ ) . '/js/news-letters.js' );
+         wp_enqueue_script( 'my-newslater-plugin-script', plugin_dir_url( __FILE__ ) . 'js/news-letters.js' );
     }
 }
 //initialize the plugin

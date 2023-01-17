@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * The class newsletter form
+ *
+ * @link https://developer.wordpress.org/
+ *
+ * @package WordPress
+ * @subpackage news lattersingup
+ * @since 1.0.0
+ */
 class NewsletterForm{
     private static $instance;
     private function __construct() {
@@ -18,7 +26,7 @@ class NewsletterForm{
     }
 
     public function newsletter_form() {
-        // Code to generate the form markup
+        // Code to form
         $form = '<form id="my-form" method="post" action="">';
         $form .= '<input type="text" name="name" class="info" placeholder="Enter your name">';
         $form .= '<input type="email" name="email" class="info" placeholder="Enter your email">';
